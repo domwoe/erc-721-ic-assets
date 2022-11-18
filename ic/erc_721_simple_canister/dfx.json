@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "canisters": {
+    "erc_721_metadata_backend": {
+      "type": "motoko",
+      "main": "src/erc_721_metadata_backend/main.mo"
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": "vessel sources",
+      "args": ""
+    }
+  }
+}

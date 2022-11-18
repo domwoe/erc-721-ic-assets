@@ -1,0 +1,17 @@
+{
+  "canisters": {
+    "erc_721_asset_canister": {
+      "source": [
+        "src/erc_721_asset_canister/assets"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "version": 1
+}
