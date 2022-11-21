@@ -3,10 +3,10 @@
 
 ## What are NFTs?
 
-NFT is the short form of Non-fungible Tokens, i.e a unique representation of a digital asset. NFTs are mostly know for PFPs, e.g. the hexagonal profile pictures on Twitter, or POAPs to collect proofs of attending an event or finishing a course. 
+NFT is the short form of Non-fungible Tokens, i.e a unique representation of a digital asset. NFTs are mostly known for PFPs, e.g. the hexagonal profile pictures on Twitter, or POAPs to collect proofs of attending an event or finishing a course. 
 Non-Fungible Tokens (NFTs) on Ethereum and other EVM-compatible platforms are usually represented following the [ERC-721 standard](https://eips.ethereum.org/EIPS/eip-721).
 
-## Why using the Internet Computer?
+## Why use the Internet Computer?
 
 In almost all cases, the actual asset, the image, music, or video, the NFT represents is not stored on-chain, because costs are prohibitive. Instead, 
 the standard includes an optional metadata extension" which allows you smart contract to be interrogated for its name and for details about the assets which your NFTs represent". Typically the assets themselves are stored on IPFS using a pinning service like [Pinata](https://www.pinata.cloud/). 
@@ -17,6 +17,8 @@ You can host an NFT entirely on the Internet Computer, but since the IC is young
 - Dynamic data to affect NFT metadata can be fetched from off-chain sources via [HTTPS outcalls](https://internetcomputer.org/https-outcalls).
 - The IC provides true cryptographic randomness as input for unique metadata.
 - You can mint NFTs on Ethereum directly from a canister smart contract on the IC using [Threshold ECDSA](https://internetcomputer.org/docs/current/developer-docs/integrations/t-ecdsa/).
+
+If you'd like to deploy your NFT on the IC instead of Ethereum, then have a look at this [example](https://internetcomputer.org/docs/current/samples/nft).
 
 ## How to host ERC 721 metadata on the Internet Computer
 
@@ -40,7 +42,7 @@ Furthermore, you need some cycles to pay for your canister smart contracts. You 
 
 If you want to get some more info on the comparison between the Internet Computer and Ethereum, have a look at this blog post: [The Internet Computer for Ethereum Developers](https://medium.com/dfinity/the-internet-computer-for-ethereum-developers-3331b50db31b).
 
-If you don't know how to deploy an NFT contract on Ethereum and mint an NFT, then either deploy everything on the Internet Computer ;) or head over to this three part series on ethereum.org
+If you don't know how to deploy an NFT contract on Ethereum and mint an NFT, then either deploy everything on the Internet Computer ;) or head over to this three-part series on ethereum.org
 - [How to write and deploy an NFT](https://ethereum.org/en/developers/tutorials/how-to-write-and-deploy-an-nft/)
 - [How to mint an NFT](https://ethereum.org/en/developers/tutorials/how-to-mint-an-nft/)
 - [How to view your NFT in MetaMask](https://ethereum.org/en/developers/tutorials/how-to-view-nft-in-metamask/)
