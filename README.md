@@ -104,9 +104,9 @@ dfx deploy --network=ic
 ```
 
 
-The assets will be now served under the following URLs:`https://<canisterId>.ic0.app` and `https://<canisterId>.raw.ic0.app`. 
+The assets will be now served under the following URLs:`https://<canisterId>.icp0.io` and `https://<canisterId>.raw.icp0.io`. 
 
-If you go to `https://<canisterId>.ic0.app/image.png`, you will see a service worker loading screen. This is because the [boundary nodes](https://internetcomputer.org/how-it-works/boundary-nodes/) of the Internet Computer first return a service worker which verifies the certification of the assets returned by the (asset) canister. You can read more about asset certification [here](https://internetcomputer.org/how-it-works/asset-certification/). If you use the `raw` URL, then the boundary nodes don't return the service worker and just translate your HTTP request into a proper call to the API of the Internet Computer. Since your browser does not know how to verify the certification, a single node machine of the Internet Computer, or a single boundary node could return fake data. 
+If you go to `https://<canisterId>.icp0.io/image.png`, you will see a service worker loading screen. This is because the [boundary nodes](https://internetcomputer.org/how-it-works/boundary-nodes/) of the Internet Computer first return a service worker which verifies the certification of the assets returned by the (asset) canister. You can read more about asset certification [here](https://internetcomputer.org/how-it-works/asset-certification/). If you use the `raw` URL, then the boundary nodes don't return the service worker and just translate your HTTP request into a proper call to the API of the Internet Computer. Since your browser does not know how to verify the certification, a single node machine of the Internet Computer, or a single boundary node could return fake data. 
 
 Now that we have our asset canister deployed, we can mint an NFT that points to the metadata in our asset canister, following the tutorial above. 
 
@@ -115,7 +115,7 @@ Now that we have our asset canister deployed, we can mint an NFT that points to 
 Certification aside, we can implement a canister that serves the assets by implementing the `http_request` method ourselves. Here, we use the Motoko programming language.
 
 
-Our canister implements the `http_request` method to serve the JSON metadata and the actual image. In the example, we directly embedded the image in the code as a base64 encoded string. You can see the complete example in the [Motoko Playground](https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/?tag=354553896).
+Our canister implements the `http_request` method to serve the JSON metadata and the actual image. In the example, we directly embedded the image in the code as a base64 encoded string. You can see the complete example in the [Motoko Playground](https://m7sm4-2iaaa-aaaab-qabra-cai.raw.icp0.io/?tag=354553896).
 
 When clicking on `Deploy` in the Motoko Playground, the canister gets deployed to the IC, and you should see something like the following in the log at the bottom: 
 ```
@@ -127,18 +127,18 @@ When clicking on `Deploy` in the Motoko Playground, the canister gets deployed t
 [12:56:20] Got canister id zydb5-siaaa-aaaab-qacba-cai
 [12:56:26] Code installed at canister id zydb5-siaaa-aaaab-qacba-cai
 ```
-If you now go to https://zydb5-siaaa-aaaab-qacba-cai.ic0.app/metadata in the browser, you should see the following
+If you now go to https://zydb5-siaaa-aaaab-qacba-cai.icp0.io/metadata in the browser, you should see the following
 
 ```
 Body does not pass verification
 ```
-This is due to the service worker. The service worker tries to verify the certificate, but we haven't implemented certification. Instead, if you go to https://zydb5-siaaa-aaaab-qacba-cai.raw.ic0.app/, you should get the JSON metadata:
+This is due to the service worker. The service worker tries to verify the certificate, but we haven't implemented certification. Instead, if you go to https://zydb5-siaaa-aaaab-qacba-cai.raw.icp0.io/, you should get the JSON metadata:
 
 ```
-{"title": "Asset Metadata","type": "object","properties": {"name": "My IC NFT ""description": "An NFT hosted on the Internet Computer""image": "https://zydb5-siaaa-aaaab-qacba-cai.raw.ic0.app/image.png", }}
+{"title": "Asset Metadata","type": "object","properties": {"name": "My IC NFT ""description": "An NFT hosted on the Internet Computer""image": "https://zydb5-siaaa-aaaab-qacba-cai.raw.icp0.io/image.png", }}
 ```
 
-and an image at https://zydb5-siaaa-aaaab-qacba-cai.raw.ic0.app/image.png.
+and an image at https://zydb5-siaaa-aaaab-qacba-cai.raw.icp0.io/image.png.
 
 
 ### Deploying and Minting the NFT on Ethereum
@@ -150,7 +150,7 @@ I deployed an ERC-721 NFT contract to the Ethereum Goerli Testnet at [0x96bAc756
 
 The script to do this is `erc_721/scripts/mint-nft.js`. The only thing we need to do is to adapt the `METADATA_URL` to the proper URL
 ```
-const METADATA_URL = "https://zydb5-siaaa-aaaab-qacba-cai.raw.ic0.app/metadata";
+const METADATA_URL = "https://zydb5-siaaa-aaaab-qacba-cai.raw.icp0.io/metadata";
 ```
 and run the script
 ```
@@ -184,9 +184,9 @@ or use a tool like [Canistergeek](https://cusyh-iyaaa-aaaah-qcpba-cai.raw.ic0.ap
 
 Canister smart contracts are upgradable by default. Principals, the name of identifiers on the IC, that are registered as controllers for a canister, can upgrade, stop, or delete the canister at any time. for many NFT projects it is important that the NFT assets are immutable, hence the list of controllers should be empty or only include a verified canister, with properly defined rights such as the [blackhole canister](https://github.com/ninegua/ic-blackhole), that allows getting status information, such as the balance, from a canister.
 
-### The ic0.app domain
+### The icp0.io domain
 
-One of the risks with hosting NFT metadata on the IC is that the link from the ERC-721 contract on Ethereum to the IC is via the Domain Name System (DNS). The .app TLD is owned by Google and the ic0 subdomain is owned by DFINITY, but can in principle be taken away. If this happens, the NFT metadata can't be resolved anymore. Similar to the `ipfs://<cid>` URI scheme, a permanent addressing scheme for resources on the Internet Computer is needed. This could be based on the [Decentralized Identifier (DID)](https://www.w3.org/TR/did-core/) specification or a new URI scheme like `icp://<canisterId>/`.
+One of the risks with hosting NFT metadata on the IC is that the link from the ERC-721 contract on Ethereum to the IC is via the Domain Name System (DNS). The icp0.io subdomain is owned by DFINITY, but can in principle be taken away. If this happens, the NFT metadata can't be resolved anymore. Similar to the `ipfs://<cid>` URI scheme, a permanent addressing scheme for resources on the Internet Computer is needed. This could be based on the [Decentralized Identifier (DID)](https://www.w3.org/TR/did-core/) specification or a new URI scheme like `icp://<canisterId>/`. We also started a [working group](https://forum.dfinity.org/t/technical-working-group-naming-system/21236) to create a decentralized naming service compatible with DNS.
 
 
 
